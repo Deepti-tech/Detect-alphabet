@@ -22,6 +22,8 @@
                 <button type="button" id="Rev" onclick="reverse()" style="display: none;">Reverse</button>
                 <div id="webcam-container"></div>
                 <div id="label-container"></div>
+                <button type="button" id="Pause" onclick="pause()" style="display: none;">Pause</button>
+                <button type="button" id="Play" onclick="play()" style="display: none;">Play</button>
             </div>
         </header>
         
@@ -44,6 +46,7 @@
         async function init() {
             document.getElementById("Start").style.display = "none";
             document.getElementById("Rev").style.display = "flex";
+            document.getElementById("Pause").style.display = "flex";
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
             const devices = await navigator.mediaDevices.enumerateDevices()
@@ -68,6 +71,16 @@
             for (let i = 0; i < maxPredictions; i++) { // and class labels
                 labelContainer.appendChild(document.createElement("div"));
             }
+        }
+        async function pause(){
+            document.getElementById("Pause").style.display = "none";
+            document.getElementById("Play").style.display = "flex";
+            webcam.pause()
+        }
+        async function play(){
+            document.getElementById("Play").style.display = "none";
+            document.getElementById("Pause").style.display = "flex";
+            webcam.play()
         }
 
         async function reverse() {
