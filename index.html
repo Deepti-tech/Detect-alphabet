@@ -18,8 +18,8 @@
             <div class="container d-flex align-items-center flex-column">
                 <h1 class="masthead-heading text-uppercase mb-0">Identify the alphabet</h1>
                 <div>Teachable Machine Image Model</div>
-                <button type="button" onclick="init()">Start</button>
-                <button type="button" onclick="reverse()">Reverse</button>
+                <button type="button" id="Start" onclick="init()">Start</button>
+                <button type="button" id="Rev" onclick="reverse()" style="display: none;">Reverse</button>
                 <div id="webcam-container"></div>
                 <div id="label-container"></div>
             </div>
@@ -42,6 +42,8 @@
 
         // Load the image model and setup the webcam
         async function init() {
+            document.getElementById("Start").style.display = "none";
+            document.getElementById("Rev").style.display = "flex";
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
             const devices = await navigator.mediaDevices.enumerateDevices()
@@ -69,16 +71,17 @@
         }
 
         async function reverse() {
+            document.getElementById("webcam-container").removeChild(webcam.canvas);
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
-            const devices = await navigator.mediaDevices.enumerateDevices()
+            // const devices = await navigator.mediaDevices.enumerateDevices()
             // load the model and metadata
             // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
             // or files from your local hard drive
             // Note: the pose library adds "tmImage" object to your window (window.tmImage)
             model = await tmImage.load(modelURL, metadataURL);
             maxPredictions = model.getTotalClasses();
-
+            
             // Convenience function to setup a webcam
             const flip = false; // whether to flip the webcam
             webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
