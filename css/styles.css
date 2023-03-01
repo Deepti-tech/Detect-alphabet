@@ -8,7 +8,9 @@ body{
   display: flex;
   flex-direction: row;
   position: relative;
-  left: 43%;
+  justify-content: center;
+  margin: auto;
+  width: 80%;
 }
 
 .control > button{
