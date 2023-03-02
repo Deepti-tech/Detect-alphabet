@@ -48,7 +48,7 @@
         }
 
         async function reverse() {
-            document.getElementById("webcam-container").removeChild(webcam.canvas);
+            // document.getElementById("webcam-container").removeChild(webcam.canvas);
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
             // const devices = await navigator.mediaDevices.enumerateDevices()
