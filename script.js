@@ -48,10 +48,10 @@
         }
 
         async function reverse() {
-            document.getElementById("webcam-container").removeChild(webcam.canvas);
+            // document.getElementById("webcam-container").removeChild(webcam.canvas);
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
-            // const devices = await navigator.mediaDevices.enumerateDevices()
+            const devices = await navigator.mediaDevices.enumerateDevices()
             // console.log(devices)
             // load the model and metadata
             // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
