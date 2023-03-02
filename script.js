@@ -24,8 +24,8 @@
             // Convenience function to setup a webcam
             const flip = true; // whether to flip the webcam
             webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-            // await webcam.setup({ facingMode: "environment" });  // request access to the webcam
-            await webcam.setup({ deviceId: devices[0].deviceId })
+            await webcam.setup({ facingMode: "environment" });  // request access to the webcam
+            // await webcam.setup({ deviceId: devices[0].deviceId })
             await webcam.play();
             window.requestAnimationFrame(loop);
 
@@ -48,7 +48,7 @@
         }
 
         async function reverse() {
-            // document.getElementById("webcam-container").removeChild(webcam.canvas);
+            document.getElementById("webcam-container").removeChild(webcam.canvas);
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
             // const devices = await navigator.mediaDevices.enumerateDevices()
@@ -63,8 +63,8 @@
             // Convenience function to setup a webcam
             const flip = false; // whether to flip the webcam
             webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-            await webcam.setup({ facingMode: "environment" });  // request access to the webcam
-            // await webcam.setup({ deviceId: devices[1].deviceId })
+            // await webcam.setup({ facingMode: "environment" });  // request access to the webcam
+            await webcam.setup({ deviceId: devices[0].deviceId })
             await webcam.play();
             window.requestAnimationFrame(loop);
 
