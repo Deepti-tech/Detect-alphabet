@@ -44,6 +44,7 @@ button:hover {
   border: 3px solid green;
   margin: auto;
   width: 80%;
+  min-height: fit-content;
   height: 60%;
   text-align: center;
   padding: 5%;

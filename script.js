@@ -55,10 +55,19 @@
     }
 
     async function camera(){
+        const detectDeviceType = () =>
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+          ? 'Mobile'
+          : 'Desktop';
+        console.log(detectDeviceType());
+
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
         model = await tmImage.load(modelURL, metadataURL);
-        const flip = false; // whether to flip the webcam
+        let flip = false; // whether to flip the webcam
+        if(detectDeviceType() == "Desktop"){
+            flip = true;
+        }
         webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
         await webcam.setup({ facingMode: "environment" });  // request access to the webcam
         // await webcam.setup({ deviceId: devices[0].deviceId })
