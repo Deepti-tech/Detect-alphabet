@@ -1,4 +1,4 @@
-// More API functions here:
+    // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
     
     // the link to your model provided by Teachable Machine export panel
@@ -10,11 +10,9 @@
     async function init() {
         document.getElementById("Start").style.display = "none";
         document.getElementById("Pause").style.display = "flex";
-        // const modelURL = URL + "model.json";
-        // const metadataURL = URL + "metadata.json";
-        // model = await tmImage.load(modelURL, metadataURL);
         
         // const devices = await navigator.mediaDevices.enumerateDevices()
+        
         // load the model and metadata
         // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
         // or files from your local hard drive
@@ -46,7 +44,6 @@
         window.requestAnimationFrame(loop);
     }
 
-    // run the webcam image through the image model
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
@@ -83,9 +80,7 @@
         }
         await webcam.play();
         window.requestAnimationFrame(loop);
-        // append elements to the DOM
-        // document.getElementById("webcam-container").appendChild(webcam.canvas);
-        
+        document.getElementById("Start").style.display = "flex";
     }
     
     window.onload = function() {
